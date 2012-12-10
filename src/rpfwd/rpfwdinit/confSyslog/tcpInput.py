@@ -15,9 +15,11 @@ class SyslogTCPInput(SyslogInput):
     
     def __init__(self, config):
         """ """
+        SyslogInput.__init__(self = self, config = config)
+        
         assert 'SyslogLogging' in config
         assert 'SyslogTCPInput' in config['SyslogLogging']
-        self.config = config
+        
         self.ourCfg = config['SyslogLogging']['SyslogTCPInput']
         self.rsyslogNeedsRestart = False
         

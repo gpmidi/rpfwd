@@ -8,15 +8,17 @@ log = logging.getLogger("rpfwd.prfwdinit.confSyslog.syslogOutput")
 # log.debug('initing')
 
 import sys, os, os.path 
+from rpfwd.rpfwdinit.conf import ConfigBase
 
-class SyslogOutput(object):
+class SyslogOutput(ConfigBase):
     """ """
     def __init__(self, config, sectionTitle):
         """ """
+        ConfigBase.__init__(self = self, config = config)
+        
         assert 'SyslogLogging' in config
         assert sectionTitle in config['SyslogLogging']
         
-        self.config = config
         self.ourCfg = config['SyslogLogging'][sectionTitle]
         self.name = sectionTitle
         
@@ -43,8 +45,10 @@ class SyslogOutputs(object):
     
     def __init__(self, config):
         """ """
+        ConfigBase.__init__(self = self, config = config)
+
         assert 'SyslogLogging' in config
-        self.config = config
+
         self.rsyslogNeedsRestart = False
         self.outputs = {}
         

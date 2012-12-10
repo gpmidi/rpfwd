@@ -14,9 +14,11 @@ class SyslogUDPInput(SyslogInput):
     
     def __init__(self, config):
         """ """
+        SyslogInput.__init__(self = self, config = config)
+        
         assert 'SyslogLogging' in config
         assert 'SyslogUDPInput' in config['SyslogLogging']
-        self.config = config
+
         self.ourCfg = config['SyslogLogging']['SyslogUDPInput']
         self.rsyslogNeedsRestart = False
         

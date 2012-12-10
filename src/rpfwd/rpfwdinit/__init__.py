@@ -11,6 +11,9 @@ import os, os.path, sys, stat
 
 from rpfwd.config import getConfig
 
+from confNetwork import ConfNetworking
+from confSyslog import ConfSyslog
+
 def main():
     """ Generate and enable all of our configs """
     parser = OptionParser(
@@ -68,6 +71,17 @@ def main():
                     configspecLocation = os.path.join(opts.staticFileLoc, 'rpfwd.configspec.ini'),
                     )
     
+    confUpdates = [
+                   ConfSyslog(config = cfg,),
+                   ConfNetworking(config = cfg,),
+                   ]
     
+    log.info("Updating all config files")
+    for conf in confUpdates:
+        conf.createUpdateConfig()
+        
+    log.info("Restarting daemons as needed")
+    for conf in confUpdates:
+        conf.restartIfNeeded()
     
     log.debug("Done")

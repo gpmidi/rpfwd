@@ -8,9 +8,9 @@ log = logging.getLogger("rpfwd.prfwdinit.confSyslog.syslogInput")
 # log.debug('initing')
 
 import sys, os, os.path 
+from rpfwd.rpfwdinit.conf import ConfigBase
 
-
-class SyslogInput(object):
+class SyslogInput(ConfigBase):
     """ Use self.rsyslogNeedsRestart to determine if we need
     to restart the rsyslog daemon or not.
     """
