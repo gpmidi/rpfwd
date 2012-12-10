@@ -19,10 +19,38 @@ class ConfFileForward(ConfigBase):
         assert 'FileForward' in config
 
         self.ourCfg = config['FileForward']
+        self.fwds = {}
+        
+        for forwarder in self.ourCfg.sections:
+            self.fwds[forwarder] = FileForward(
+                                               config = config,
+                                               sectionTitle = forwarder,
+                                               )
     
-#    def createUpdateConfig(self):
-#        """ Create and/or update our conf.d file """
-#     
-#    def restartIfNeeded(self):
-#        """ Restart our daemon, if it's required. """
+    def createUpdateConfig(self):
+        """ Create and/or update our conf.d file """
+        raise NotImplementedError
+     
+    def restartIfNeeded(self):
+        """ Restart our daemon, if it's required. """
+        raise NotImplementedError
 
+
+class FileForward(ConfigBase):
+    """ Enable forwarding of log files to a given target """
+    
+    def __init__(self, config, sectionTitle):
+        ConfigBase.__init__(self = self, config = config)
+        
+        assert sectionTitle in self.config['FileForward']
+        
+        self.ourCfg = self.config['FileForward'][sectionTitle]
+        self.name = sectionTitle
+        
+    def createUpdateConfig(self):
+        """ Create and/or update our conf.d file """
+        raise NotImplementedError
+     
+    def restartIfNeeded(self):
+        """ Restart our daemon, if it's required. """
+        raise NotImplementedError        

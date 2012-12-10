@@ -13,6 +13,8 @@ from rpfwd.config import getConfig
 
 from confNetwork import ConfNetworking
 from confSyslog import ConfSyslog
+from confFileForward import ConfFileForward
+from confGPG import ConfGPG
 
 def main():
     """ Generate and enable all of our configs """
@@ -66,14 +68,19 @@ def main():
         log.error("Can't read the helper files location: %r", opts.staticFileLoc)
         sys.exit(1)
     
+    log.info("Going to update config files and restart daemons, as required to match the rpfwd.ini config")
+    
     cfg = getConfig(
                     location = opts.mainConfigLoc,
                     configspecLocation = os.path.join(opts.staticFileLoc, 'rpfwd.configspec.ini'),
                     )
     
+    # Make changes as needed
     confUpdates = [
                    ConfSyslog(config = cfg,),
                    ConfNetworking(config = cfg,),
+                   ConfFileForward(config = cfg,),
+                   ConfGPG(config = cfg,),
                    ]
     
     log.info("Updating all config files")

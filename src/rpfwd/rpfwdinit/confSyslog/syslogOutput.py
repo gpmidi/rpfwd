@@ -52,7 +52,7 @@ class SyslogOutputs(object):
         self.rsyslogNeedsRestart = False
         self.outputs = {}
         
-        for section in config['SyslogLogging'].keys():
+        for section in config['SyslogLogging'].sections:
             self.outputs[section] = SyslogOutput(
                                                  config = self.config,
                                                  sectionTitle = section,
