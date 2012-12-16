@@ -9,6 +9,7 @@ log = logging.getLogger("rpfwd.prfwdinit.confSyslog.__init__")
 
 from rpfwd.rpfwdinit.conf import ConfigBase
 
+# Don't import SyslogInput - It's a helper only
 from tcpInput import SyslogTCPInput
 from udpInput import SyslogUDPInput
 
