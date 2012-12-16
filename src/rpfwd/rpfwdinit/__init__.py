@@ -47,7 +47,7 @@ def main():
                       type = "string",
                       dest = "staticFileLoc",
                       # TODO: Move this somewhere where it makes more sense
-                      default = "/usr/share/doc/rpfwd/",
+                      default = "/usr/share/rpfwd/",
                       help = "The location that the various helper files can be found. [Default: %default]",
                       )
     
