@@ -30,8 +30,8 @@ class ConfNetworking(ConfigBase):
             f.write(cfg)
         
         log.debug("Setting live hostname")
-        # FIXME: Swtich this to a way without a shell injection vuln
-        rc = os.system("//hostname '%s'" % self.ourCfg['hostname'])
+        # FIXME: Switch this to a way without a shell injection vuln
+        rc = os.system("/bin/hostname '%s'" % self.ourCfg['hostname'])
         if rc != 0:
             log.error("Failed to set hostname to %r. Got $r. ", self.ourCfg['hostname'], rc)
                     
