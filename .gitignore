@@ -35,3 +35,4 @@ nosetests.xml
 .pydevproject
 _*_
 /rpi1
+/.settings
