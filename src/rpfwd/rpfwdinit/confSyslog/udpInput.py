@@ -42,7 +42,7 @@ $InputUDPServerRun %(port)s
 #$InputUDPServerRun %(port)s
             """ % self.ourCfg
         
-        with open('/etc/rsyslog.d/70-SyslogUDPInput.conf', 'w') as f:
+        with open('/etc/rsyslog.d/20-SyslogUDPInput.conf', 'w') as f:
             f.write(cfg)
         
         

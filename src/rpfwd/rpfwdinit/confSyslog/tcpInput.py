@@ -43,7 +43,7 @@ $InputTCPServerRun %(port)s
 #$InputTCPServerRun %(port)s
             """ % self.ourCfg
         
-        with open('/etc/rsyslog.d/70-SyslogTCPInput.conf', 'w') as f:
+        with open('/etc/rsyslog.d/20-SyslogTCPInput.conf', 'w') as f:
             f.write(cfg)
         
     
