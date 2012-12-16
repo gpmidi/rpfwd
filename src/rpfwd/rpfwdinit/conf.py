@@ -23,4 +23,13 @@ class ConfigBase(object):
         """
         raise NotImplementedError, "Need to define restartIfNeeded"
     
-    
+    def getRandomPW(self, length = 20):
+        """ Return a randomly generated password """
+        import string
+        import random
+        
+        chars = string.ascii_letters + string.digits + ''
+        
+        random.seed = (os.urandom(4096))
+        
+        return ''.join(random.choice(chars) for i in range(length))   
