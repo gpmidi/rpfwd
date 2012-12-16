@@ -78,8 +78,8 @@ def main():
     # Make changes as needed
     confUpdates = [
                    ConfSyslog(config = cfg,),
-                   ConfNetworking(config = cfg,),
-                   ConfFileForward(config = cfg,),
+                   # ConfNetworking(config = cfg,),
+                   # ConfFileForward(config = cfg,),
                    ConfGPG(config = cfg,),
                    ]
     
